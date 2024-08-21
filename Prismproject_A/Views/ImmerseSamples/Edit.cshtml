@@ -1,0 +1,100 @@
+﻿@model Prismproject_A.Models.ImmerseSamples
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="flex-1 bg-white p-10">
+<h1 class="text-2xl font-bold mb-4">Edit Sample</h1>
+
+
+<hr class="mb-4">
+
+<div class="flex justify-center">
+    <div class="w-1/2">
+        <form asp-action="Edit" class="bg-gray-100 shadow-md rounded px-10 pt-6 pb-8 mb-4">
+            <div asp-validation-summary="ModelOnly" class="text-red-500 text-sm mb-4"></div>
+
+            <!-- Hidden ID Field -->
+            <input type="hidden" asp-for="Id" />
+
+            <!-- Box Number -->
+            <div class="mb-4">
+                <label for="BoxNumber" class="block text-gray-700 text-sm font-bold mb-2">Box Number</label>
+                <input asp-for="BoxNumber" id="BoxNumber" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" />
+                <span asp-validation-for="BoxNumber" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            <!-- Barcode -->
+            <div class="mb-4">
+                <label for="Barcode" class="block text-gray-700 text-sm font-bold mb-2">Barcode</label>
+                <input asp-for="Barcode" id="Barcode" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" />
+                <span asp-validation-for="Barcode" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            <!-- Box Row -->
+            <div class="mb-4">
+                <label for="BoxRow" class="block text-gray-700 text-sm font-bold mb-2">Box Row</label>
+                <input asp-for="BoxRow" id="BoxRow" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" />
+                <span asp-validation-for="BoxRow" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            <!-- Box Column -->
+            <div class="mb-4">
+                <label for="BoxColumn" class="block text-gray-700 text-sm font-bold mb-2">Box Column</label>
+                <input asp-for="BoxColumn" id="BoxColumn" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" />
+                <span asp-validation-for="BoxColumn" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            <!-- Tbl Date Added -->
+            <div class="mb-4">
+                <label for="TbldateAdded" class="block text-gray-700 text-sm font-bold mb-2">Date Added</label>
+                <input asp-for="TbldateAdded" id="TbldateAdded" type="date" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" />
+                <span asp-validation-for="TbldateAdded" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            @*  <!-- Plate Number -->
+            <div class="mb-4">
+            <label for="PlateNumber" class="block text-gray-700 text-sm font-bold mb-2">Plate Number</label>
+            <input asp-for="PlateNumber" id="PlateNumber" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" />
+            <span asp-validation-for="PlateNumber" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            <!-- PCR Plate Layout -->
+            <div class="mb-4">
+            <label for="PcrplateLayout" class="block text-gray-700 text-sm font-bold mb-2">PCR Plate Layout</label>
+            <input asp-for="PcrplateLayout" id="PcrplateLayout" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" />
+            <span asp-validation-for="PcrplateLayout" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            <!-- Aliquote Plate Number -->
+            <div class="mb-4">
+            <label for="AliquotePlateNumber" class="block text-gray-700 text-sm font-bold mb-2">Aliquote Plate Number</label>
+            <input asp-for="AliquotePlateNumber" id="AliquotePlateNumber" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" />
+            <span asp-validation-for="AliquotePlateNumber" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            <!-- Aliquote Plate Position -->
+            <div class="mb-6">
+            <label for="AliquotePlatePosition" class="block text-gray-700 text-sm font-bold mb-2">Aliquote Plate Position</label>
+            <input asp-for="AliquotePlatePosition" id="AliquotePlatePosition" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" />
+            <span asp-validation-for="AliquotePlatePosition" class="text-red-500 text-xs italic"></span>
+            </div> *@
+
+            <!-- Submit Button -->
+            <div class="flex items-center justify-between">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Save
+                </button>
+                <a href="@Url.Action("Index")" class="inline-block px-4 py-2 bg-gray-500 text-white rounded">Back to Samples</a>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

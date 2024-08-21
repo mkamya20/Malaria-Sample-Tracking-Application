@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Prismproject_A.Models.BoxSubs>
+
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+      @if (SignInManager.IsSignedIn(User))
+                {
+            <div class="flex-1 bg-white px-10">
+                        <!-- Part 1 -->
+               <div id="part1" class="part-container">
+                            <h1 class="border-b py-2 text-2xl font-semibold">Prism Samples</h1>
+                            
+
+                            <!-- Part 1 content here -->
+            <div class="flex flex-wrap gap-4 lg:gap-6 pb-2 pt-2 border-b border-gray-200 bg-gray-50">
+
+                <!-- Search Input -->
+                <div class="flex-1 max-w-sm lg:max-w-sm">
+                    <div class="mb-4">
+                        <label for="searchPart1" class="block text-gray-700 font-semibold mb-2">Search sample:</label>
+                        <div class="relative">
+                            <input type="text" id="searchPart1" placeholder="Search" class="form-input w-full py-2 px-4 pr-12 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" />
+                            <button class="absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 hover:text-gray-700 focus:outline-none" style="font-size: 24px;">
+                                &#x1F50D;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload CSV Form -->
+                <div class="flex-1  max-w-sm">
+                    <form asp-action="UploadCsv" method="post" enctype="multipart/form-data" class="flex flex-col space-y-1">
+                        <div class="flex flex-col items-start space-y-0">
+                            <label for="csvFile" class="text-gray-700 font-semibold">Upload samples:</label>
+                            <input type="file" name="csvFile" id="csvFile" accept=".csv" class="form-input py-2 px-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" />
+                        </div>
+
+                        <button type="submit" class="bg-green-500 text-white px-4 py-1 rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition duration-150 ease-in-out flex items-center justify-center">
+                            <i class="fas fa-upload mr-2"></i> Upload
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Button options -->
+                <div class="flex flex-wrap items-center justify-center space-x-4 max-w-sm">
+                    <!-- Download Button Container -->
+                    <div class="flex flex-col items-center space-y-2">
+                        <label class="text-gray-700 font-semibold">Download samples:</label>
+                        <a href="@Url.Action("ExportToCsv")" class="inline-flex flex-col items-center bg-blue-500 text-white px-3 py-1 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+                            <i class="fas fa-download text-xl mb-1"></i>
+                            Download
+                        </a>
+                    </div>
+
+                    <!-- Add New Sample Button Container -->
+                    <div class="flex flex-col items-center space-y-2">
+                        <label class="text-gray-700 font-semibold">Add a new sample:</label>
+                        <a href="/BoxSubs/Create" class="inline-flex flex-col items-center bg-gray-500 text-white px-3 py-1 rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+                            <i class="fas fa-plus text-xl mb-1"></i>
+                            Add sample
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+                            <div class="mt-2">
+                                <div class="table-container mb-3">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Box Number</th>
+                                                <th>Barcode</th>
+                                                <th>Box Row</th>
+                                                <th>Box Column</th>
+                                                <th>Date and time added</th>
+                                                <th>Options</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                       
+                                                <tr class="Search">
+
+                                                    <td>@Html.DisplayFor(modelItem => item.BoxNumber)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Barcode)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.BoxRow)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.BoxColumn)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.TbldateAdded)</td>
+                                                    <td class="">
+                                                        <a href="@Url.Action("Details", new { id = item.Id })" class="icon-link bg-yellow-500 hover:bg-yellow-600 rounded-md"><i class="fas fa-eye icon"></i>
+                                                            <span class="text">View</span>
+                                                        </a>
+                                                        <a href="@Url.Action("Edit", new { id = item.Id })" class="icon-link bg-blue-500 hover:bg-blue-600 rounded-md"><i class="fas fa-edit icon"></i>
+                                                            <span class="text">Edit</span>
+                                                        </a>
+                                                        <a href="@Url.Action("Delete", new { id = item.Id })" class="icon-link bg-red-500 hover:bg-red-600 rounded-md"><i class="fas fa-trash icon"></i>
+                                                            <span class="text">Delete</span>
+                                                        </a>
+                                                </td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="flex-1 bg-white p-10">
+                <h1 class="text-4xl font-bold pb-3 border-b border-black text-center">IDRC Tracking Database</h1>
+                    <div class="mt-4 text-center">
+                        <h5 class="font-bold">Ready to explore Prism data?</h5>
+                        <p>Create an account to unlock access or log in to your existing account.</p>
+                    </div>
+                    </div>
+                }
+
+

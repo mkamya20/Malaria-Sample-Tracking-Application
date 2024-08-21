@@ -1,0 +1,54 @@
+﻿@model Prismproject_A.Models.SpecimenTypes
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SpecimenTypes</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="SpecimenName" class="control-label"></label>
+                <input asp-for="SpecimenName" class="form-control" />
+                <span asp-validation-for="SpecimenName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecimenType" class="control-label"></label>
+                <input asp-for="SpecimenType" class="form-control" />
+                <span asp-validation-for="SpecimenType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prefix" class="control-label"></label>
+                <input asp-for="Prefix" class="form-control" />
+                <span asp-validation-for="Prefix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumRows" class="control-label"></label>
+                <input asp-for="NumRows" class="form-control" />
+                <span asp-validation-for="NumRows" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumCols" class="control-label"></label>
+                <input asp-for="NumCols" class="form-control" />
+                <span asp-validation-for="NumCols" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

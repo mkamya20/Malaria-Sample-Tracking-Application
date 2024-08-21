@@ -1,0 +1,63 @@
+﻿@model Prismproject_A.Models.Report
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Report</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Site" class="control-label"></label>
+                <input asp-for="Site" class="form-control" />
+                <span asp-validation-for="Site" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoxNumber" class="control-label"></label>
+                <input asp-for="BoxNumber" class="form-control" />
+                <span asp-validation-for="BoxNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SampleType" class="control-label"></label>
+                <input asp-for="SampleType" class="form-control" />
+                <span asp-validation-for="SampleType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Barcode" class="control-label"></label>
+                <input asp-for="Barcode" class="form-control" />
+                <span asp-validation-for="Barcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoxRow" class="control-label"></label>
+                <input asp-for="BoxRow" class="form-control" />
+                <span asp-validation-for="BoxRow" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoxColumn" class="control-label"></label>
+                <input asp-for="BoxColumn" class="form-control" />
+                <span asp-validation-for="BoxColumn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TbldateAdded" class="control-label"></label>
+                <input asp-for="TbldateAdded" class="form-control" />
+                <span asp-validation-for="TbldateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

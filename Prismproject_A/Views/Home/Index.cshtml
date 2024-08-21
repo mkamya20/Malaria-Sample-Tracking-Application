@@ -1,0 +1,178 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    .sidebar {
+        /* position: fixed;
+        top: 20%;
+        bottom: 0;
+        left: 0;
+        z-index: -100; */
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-right: 1px solid black;
+        overflow-y: auto;
+    }
+
+    .part {
+        display: none;
+    }
+
+        .part.active {
+            display: block;
+        }
+</style>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="row d-flex justify-content-center pb-5">
+
+            <div class="flex flex-col items-center py-2">
+                <h1 class="text-4xl font-bold pb-3 border-b border-black">IDRC Tracking Database</h1>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <p class="text-xl mt-4">Select a category below.</p>
+                }
+                else
+                {
+                    <div class="mt-4 text-center">
+                        <h5 class="font-bold">Ready to explore Prism data?</h5>
+                        <p>Create an account to unlock access or log in to your existing account.</p>
+                    </div>
+                }
+            </div>
+            @if (SignInManager.IsSignedIn(User))
+            {
+
+                <div class="flex h-screen">
+                    <div class="w-64 bg-white shadow-xl flex-shrink-0">
+                        <div class="flex items-center justify-between p-4 border-b">
+                            <a href="#" class="text-lg font-semibold text-gray-800">Dashboard</a>
+                        </div>
+                        <nav class="mt-6">
+                            <div class="space-y-2">
+                                <button id="part1Btn" class="w-full py-2 px-4 text-sm text-left text-gray-700 hover:bg-gray-200 focus:outline-none">
+                                    Prism
+                                </button>
+                                <button id="part2Btn" class="w-full py-2 px-4 text-sm text-left text-gray-700 hover:bg-gray-200 focus:outline-none">
+                                    Immerse
+                                </button>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <div class="flex-1 p-10">
+                        <!-- Part 1 -->
+                        <div id="part1" class="part-container">
+                            <h1 class="border-b pb-4 text-2xl font-semibold">Samples</h1>
+                            <!-- Part 1 content here -->
+                            <div class="flex justify-between pb-3 pt-3 border-b">
+                                <div class="w-1/2">
+                                    <div class="mb-4">
+                                        <label for="searchPart1" class="block">Search sample by barcode:</label>
+                                        <div class="relative">
+                                            <input type="text" id="searchPart1" placeholder="Search" class="form-input pr-12">
+                                            <button class="absolute right-0 top-0 mt-3 mr-4" style="font-size: 16px;">&#x1F50D;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 text-right">
+                                    <a href="#" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add new sample</a>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <div class="table-container">
+                                <table class="table-auto w-full">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Box Number
+                                            </th>
+                                            <th>
+                                                Barcode
+                                            </th>
+                                            <th>
+                                                Box Row
+                                            </th>
+                                            <th>
+                                                Box Column
+                                            </th>
+                                            <th>
+                                                Date and time added
+                                            </th>
+
+                                            <th>Options</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Sample data rows here -->
+                                        <tr>
+                                            <td class="border px-4 py-2">12345</td>
+                                            <td class="border px-4 py-2">ABC123</td>
+                                            <td class="border px-4 py-2">A</td>
+                                            <td class="border px-4 py-2">1</td>
+                                            <td class="border px-4 py-2">2024-07-03 09:00 AM</td>
+                                            <td class="border px-4 py-2">
+                                                <a href="#" class="text-blue-500 hover:text-blue-600">Edit</a> |
+                                                <a href="#" class="text-yellow-500 hover:text-yellow-600">Details</a> |
+                                                <a href="#" class="text-red-500 hover:text-red-600">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="part2" class="part-container hidden">
+                            <h1 class="border-b pb-4 text-2xl font-semibold">Immerse Samples</h1>
+                            <!-- Part 2 content here -->
+                            <!-- Similar structure as Part 1 -->
+                        </div>
+                    </div>
+                </div>
+
+            }
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    // Toggle between Part 1 and Part 2
+                    $('#part1Btn').click(function () {
+                        $('#part1').removeClass('hidden');
+                        $('#part2').addClass('hidden');
+                        $(this).addClass('bg-gray-200');
+                        $('#part2Btn').removeClass('bg-gray-200');
+                    });
+
+                    $('#part2Btn').click(function () {
+                        $('#part2').removeClass('hidden');
+                        $('#part1').addClass('hidden');
+                        $(this).addClass('bg-gray-200');
+                        $('#part1Btn').removeClass('bg-gray-200');
+                    });
+
+                    // Search functionality (Part 1)
+                    $('#searchPart1').keyup(function () {
+                        var searchText = $(this).val().toLowerCase();
+                        $('.part-container#part1 tbody tr').each(function () {
+                            var found = false;
+                            $(this).find('td').each(function () {
+                                if ($(this).text().toLowerCase().indexOf(searchText) !== -1) {
+                                    found = true;
+                                    return false; // break the loop
+                                }
+                            });
+                            found ? $(this).show() : $(this).hide();
+                        });
+                    });
+                });
+            </script>
+        </div>
+
+    </main>
+</div>
+

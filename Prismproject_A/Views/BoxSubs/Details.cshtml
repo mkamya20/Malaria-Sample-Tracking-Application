@@ -1,0 +1,57 @@
+﻿@model Prismproject_A.Models.BoxSubs
+
+@{
+    ViewData["Title"] = "Details";
+}
+<script src="https://cdn.tailwindcss.com"></script>
+<div class="flex-1 bg-white p-10">
+<h1 class="text-3xl font-bold mb-4">@Html.DisplayFor(model => model.Barcode)</h1>
+<hr class="mb-4">
+
+<div class="border rounded-lg shadow-md p-4 mb-4 bg-gray-100">
+    <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2">
+        <div class="flex items-center mb-2 md:mb-0">
+            <dt class="text-gray-600 text-lg font-semibold">Box Number:</dt>
+            <dd class="ml-2">@Html.DisplayFor(model => model.BoxNumber)</dd>
+        </div>
+        <div class="flex items-center mb-2 md:mb-0">
+            <dt class="text-gray-600 text-lg font-semibold">Barcode:</dt>
+            <dd class="ml-2">@Html.DisplayFor(model => model.Barcode)</dd>
+        </div>
+        <div class="flex items-center mb-2 md:mb-0">
+            <dt class="text-gray-600 text-lg font-semibold">Box Row:</dt>
+            <dd class="ml-2">@Html.DisplayFor(model => model.BoxRow)</dd>
+        </div>
+        <div class="flex items-center mb-2 md:mb-0">
+            <dt class="text-gray-600 text-lg font-semibold">Box Column:</dt>
+            <dd class="ml-2">@Html.DisplayFor(model => model.BoxColumn)</dd>
+        </div>
+        <div class="flex items-center mb-2 md:mb-0">
+            <dt class="text-gray-600 text-lg font-semibold">Date Added:</dt>
+            <dd class="ml-2">@Html.DisplayFor(model => model.TbldateAdded)</dd>
+        </div>
+        @* <div class="flex items-center mb-2 md:mb-0">
+            <dt class="text-gray-600 text-lg font-semibold">Plate Number:</dt>
+            <dd class="ml-2">@Html.DisplayFor(model => model.PlateNumber)</dd>
+        </div>
+        <div class="flex items-center mb-2 md:mb-0">
+            <dt class="text-gray-600 text-lg font-semibold">PCR Plate Layout:</dt>
+            <dd class="ml-2">@Html.DisplayFor(model => model.PcrplateLayout)</dd>
+        </div>
+        <div class="flex items-center mb-2 md:mb-0">
+            <dt class="text-gray-600 text-lg font-semibold">Aliquote Plate Number:</dt>
+            <dd class="ml-2">@Html.DisplayFor(model => model.AliquotePlateNumber)</dd>
+        </div>
+        <div class="flex items-center mb-2 md:mb-0">
+            <dt class="text-gray-600 text-lg font-semibold">Aliquote Plate Position:</dt>
+            <dd class="ml-2">@Html.DisplayFor(model => model.AliquotePlatePosition)</dd>
+        </div> *@
+    </dl>
+</div>
+
+<div class="mt-4">
+    <a href="@Url.Action("Edit", new { id = Model?.Id })" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+    <a href="@Url.Action("Index")" class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">Back to List</a>
+</div>
+
+</div>
