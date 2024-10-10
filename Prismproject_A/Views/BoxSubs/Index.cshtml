@@ -6,6 +6,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -120,13 +121,46 @@
                 }
                 else
                 {
-                    <div class="flex-1 bg-white p-10">
-                <h1 class="text-4xl font-bold pb-3 border-b border-black text-center">IDRC Tracking Database</h1>
-                    <div class="mt-4 text-center">
-                        <h5 class="font-bold">Ready to explore Prism data?</h5>
-                        <p>Create an account to unlock access or log in to your existing account.</p>
-                    </div>
-                    </div>
+    <div class="flex-1 bg-white p-10">
+        <h1 class="text-4xl font-bold pb-3 border-b border-black text-center">IDRC Tracking Database</h1>
+
+        <div class="mt-4 text-center">
+            <h5 class="font-bold text-2xl">Ready to explore IDRC data?</h5>
+            <p class="text-xl">Create an account to unlock access or log in to your existing account.</p>
+        </div>
+
+        <div class="mt-6 flex justify-center gap-4">
+            <a class="nav-link text-white text-xl bg-blue-600 p-2 rounded-xl" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link text-dark text-xl bg-gray-400 rounded-xl text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </div>
+
+        <div class="mt-8">
+            <h3 class="text-2xl font-bold text-center mb-4">About</h3>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md max-w-xs text-center transition duration-300 ease-in-out transform hover:scale-105">
+                    <h4 class="text-xl font-semibold mb-2">IMMRSE-U: Implementing Malaria MoleculaR SurveillancE in Uganda</h4>
+                    <p>This project is a collaboration between IDRC, the Uganda Ministry of Health, the NIH-funded African Center of Excellence in Bioinformatics (ACE)
+                        , and the University of California, San Francisco, to integrate malaria genomics data into routine surveillance activities in Uganda. </p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md max-w-xs text-center transition duration-300 ease-in-out transform hover:scale-105">
+                    <h4 class="text-xl font-semibold mb-2">PRISM: Program for Resistance, Immunology, Surveillance & Modeling of Malaria in Uganda</h4>
+                    <p> This project is a malaria research program and represents the East African region for the International Center of Excellence for Malaria Research (ICEMR) network. The ICEMR program was created by NIAID/NIH in July 2010, and established a global network of independent research centers in malaria-endemic settings to provide knowledge,
+                    tools, and evidence-based strategies to support researchers working in a variety of settings, especially within governments and healthcare institutions.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md max-w-xs text-center transition duration-300 ease-in-out transform hover:scale-105">
+                    <h4 class="text-xl font-semibold mb-2">ZUMBA</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mt-8 text-center">
+            <h3 class="text-2xl font-bold mb-4">Have Questions?</h3>
+            <p>If you have any questions or need help, feel free to <a href="https://www.idrc-uganda.org/contact-information/" class="text-blue-500 underline">contact us</a>.</p>
+        </div>
+    </div>
+
                 }
 
 

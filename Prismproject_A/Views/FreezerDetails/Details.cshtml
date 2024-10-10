@@ -4,39 +4,41 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<script src="https://cdn.tailwindcss.com"></script>
+<div class="flex-1 bg-white p-10">
+    <h1 class="text-3xl font-bold mb-4">@Html.DisplayFor(model => model.Freezername)</h1>
+    <hr class="mb-4">
 
-<div>
-    <h4>FreezerDetails</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <div class="border rounded-lg shadow-md p-4 mb-4 bg-gray-100">
+        <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2">
+        <dt class = "text-gray-600 text-lg font-semibold">
             @Html.DisplayNameFor(model => model.Freezername)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "ml-2">
             @Html.DisplayFor(model => model.Freezername)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "text-gray-600 text-lg font-semibold">
             @Html.DisplayNameFor(model => model.Compartment)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "ml-2">
             @Html.DisplayFor(model => model.Compartment)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "text-gray-600 text-lg font-semibold">
             @Html.DisplayNameFor(model => model.Rack)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "ml-2">
             @Html.DisplayFor(model => model.Rack)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "text-gray-600 text-lg font-semibold">
             @Html.DisplayNameFor(model => model.Position)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "ml-2">
             @Html.DisplayFor(model => model.Position)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="mt-4">
+        <a href="@Url.Action("Edit", new { id = Model?.Id })" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+        <a href="@Url.Action("Index")" class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">Back to List</a>
+    </div>
+    </div>

@@ -49,7 +49,7 @@
             <div class="flex justify-between items-center">
                 <!-- Logo Section -->
                 <a href="#" class="flex items-center space-x-2 p-2 rounded-lg  hover:bg-gray-200 transition-all duration-300 ease-in-out  hover:shadow-lg transform hover:scale-105">
-                    <i class="bi bi-database-check text-blue-800 text-3xl transition-transform duration-300 ease-in-out hover:scale-110"></i>
+                    <i class="bi bi-database-check text-3xl transition-transform duration-300 ease-in-out hover:scale-110"></i>
                     <h1 class="text-2xl font-bold text-gray-800 hover:text-blue-800 transition-all duration-300 ease-in-out">IDRC Tracking Database</h1>
                 </a>
 
@@ -83,8 +83,9 @@
     
     <div class="container bg-gray-50 px-0">
         <main role="main" class="pb-1 pl-0 ">
-            <div class="flex h-50">
+            <div class="flex h-50 @(SignInManager.IsSignedIn(User) ? "" : "items-center justify-center")">
             @if (SignInManager.IsSignedIn(User)){
+                @* My side bar begin here *@
                     <button id="sidebarToggle" class=" px-1 py-1  bg-gray-200 grd hover:bg-gray-300 sidebutton">
                         <svg id="toggleIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -93,7 +94,7 @@
                 <div id="sidebar" class="w-64 bg-gray-50 shadow-xl flex-shrink-0 rounded-r-xl">
                         <div class="flex items-center  p-4 rounded-r-xl bg-gray-200 grd">
                             <i class="fas fa-tachometer-alt text-gray-900 mr-1 "></i>
-                            <h2 class="text-xl font-semibold text-gray-800">Dashboard</h2>
+                            <h2 class="text-xl font-semibold text-gray-800 hover:bg-blue-800">Dashboard</h2>
                         </div>
 
                     <nav class="mt-6">
@@ -105,8 +106,10 @@
 
                             
                         <div class="relative">
-                            <button id="part1Btn" class="w-full py-2 px-4 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
-                                    <a href="/BoxSubs/Index"> <b>Prism</b> </a>
+                            <button id="part1Btn" class="w-full py-2 px-2 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
+                                    <i class="bi bi-pen-fill"></i> 
+                                    <a href="/BoxSubs/Index" style="color: black;"> <b>Prism</b> </a>
+
                                 <svg id="part1Arrow" class="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 pointer-events-none" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 15l6-6H4l6 6z"></path>
                                 </svg>
@@ -114,13 +117,14 @@
                             <div id="part1Dropdown" class="hidden absolute mt-1 w-full bg-white rounded-xl shadow-lg z-10">
                                 <a href="/BoxSubs/Index" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">View samples</a>
                                 <a href="/BoxSubs/Create" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Add sample</a>
-                                <a href="/FreezerDetails/Index" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Freezer details</a>
-                                <a href="/BoxLocations/Index" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Box locations</a>
+                                @* <a href="/FreezerDetails/Index" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Freezer details</a> *@
+                                @* <a href="/BoxLocations/Index" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Box locations</a> *@
                             </div>
                         </div>
                         <div class="relative mt-2">
-                            <button id="part2Btn" class="w-full py-2 px-4 text-lg text-left text-gray-700 hover:bg-gray-300 focus:outline-none relative">
-                                    <a href="/ImmerseSamples/Index"><b>Immerse</b></a>
+                            <button id="part2Btn" class="w-full py-2 px-2 text-lg text-left text-gray-700 hover:bg-gray-300 focus:outline-none relative">
+                                    <i class="bi bi-pen"></i>
+                                    <a href="/ImmerseSamples/Index" style="color: black;"><b>Immerse</b></a>
                                 <svg id="part2Arrow" class="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 pointer-events-none" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 15l6-6H4l6 6z"></path>
                                 </svg>
@@ -131,19 +135,22 @@
                             </div>
                         </div>
                         <div class="relative mt-2">
-                            <button id="" class="w-full py-2 px-4 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
-                                    <a href="/ZumbaSamples/Index"><b>Zumba</b></a>
-                                <svg id="" class="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 pointer-events-none" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <button id="part3Btn" class="w-full py-2 px-2 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
+                                    <i class="bi bi-pen-fill"></i>
+                                    <a href="/ZumbaSamples/Index" style="color: black;"><b>Zumba</b></a>
+                                <svg id="part3Arrow" class="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 pointer-events-none" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 15l6-6H4l6 6z"></path>
                                 </svg>
                             </button>
-                            <div id="part1Dropdown" class="hidden absolute mt-1 w-full bg-white rounded-xl shadow-lg z-10">
+                            <div id="part3Dropdown" class="hidden absolute mt-1 w-full bg-white rounded-xl shadow-lg z-10">
+                                <a href="/ZumbaSamples/Index" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">View sample</a>
                                 <a href="ZumbaSamples/Create" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Add sample</a>
-                            </div>
+                                </div>
                         </div>
                         <div class="relative mt-2">
-                            <button id="part1Btn" class="w-full py-2 px-4 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
-                                    <a href="#"><b>TES</b></a>
+                            <button id="part1Btn" class="w-full py-2 px-2 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
+                                    <i class="bi bi-pen"></i>
+                                    <a href="#" style="color: black;"><b>TES</b></a>
                                 <svg id="part1Arrow" class="absolute right-4 top-1/2 transform -translate-y-1/2 transition-transform duration-300 pointer-events-none" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 15l6-6H4l6 6z"></path>
                                 </svg>
@@ -153,28 +160,38 @@
                             </div>
                         </div>
                             <div class="relative mt-2 border-b border-black my-1 mx-4 flex items-center justify-center">
-                                <i class="bi bi-pie-chart-fill mr-2 text-xl"></i>
-                                <h1 class="text-xl font-bold">OTHERS</h1>
+                                <i class="bi bi-bar-chart-line-fill mr-2 text-xl"></i>
+                                <h1 class="text-xl font-bold">MORE</h1>
                             </div>
                         <div class="relative mt-2">
                                 <button id="" class="w-full py-2 px-4 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
-                                    <a href="/SpecimenTypes/Index"><b>Specimen Types</b></a>
+                                    <a href="/SpecimenTypes/Index" style="color: black;"><b>Specimen Types</b></a>
                                 </button>
                         </div>
                         <div class="relative mt-2">
                                 <button id="" class="w-full py-2 px-4 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
-                                    <a href="/MRCmappings/Index"><b>MRC mappings</b></a>
+                                    <a href="/FreezerDetails/Index" style="color: black;"><b>Freezer Details</b></a>
+                                </button>
+                         </div>
+                        <div class="relative mt-2">
+                                <button id="" class="w-full py-2 px-4 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
+                                    <a href="/MRCmappings/Index" style="color: black;"><b>MRC mappings</b></a>
                                 </button>
                          </div>
                          <div class="relative mt-2">
                                 <button id="" class="w-full py-2 px-4 text-lg text-left text-gray-700 hover:bg-gray-200 focus:outline-none relative">
-                                    <a href="/Locations/Index"><b>Locations</b></a>
+                                    <a href="/Locations/Index" style="color: black;"><b>Locations</b></a>
                                 </button>
                          </div>
                     </nav>
-                </div>}
-                else{}
-                    @RenderBody() <!-- Render your main content here -->
+                    </div>
+                    @* And I think end*@
+                }
+                else
+                {
+
+                }
+                @RenderBody() <!-- Render your main content here -->
             </div>
         </main>
         <!-- Back to Top Button -->
@@ -237,6 +254,10 @@
         const part2Dropdown = document.getElementById('part2Dropdown');
         const part2Arrow = document.getElementById('part2Arrow');
 
+        const part3Btn = document.getElementById('part3Btn');
+        const part3Dropdown = document.getElementById('part3Dropdown');
+        const part3Arrow = document.getElementById('part3Arrow');
+
         part1Btn.addEventListener('click', function () {
             part1Dropdown.classList.toggle('hidden');
             part1Arrow.classList.toggle('rotate-90');
@@ -246,7 +267,10 @@
             part2Dropdown.classList.toggle('hidden');
             part2Arrow.classList.toggle('rotate-90');
         });
-
+        part3Btn.addEventListener('click', function () {
+            part3Dropdown.classList.toggle('hidden');
+            part3Arrow.classList.toggle('rotate-90');
+        });
         // Close dropdowns when clicking outside
         document.addEventListener('click', function (event) {
             if (!part1Btn.contains(event.target)) {
@@ -256,6 +280,10 @@
             if (!part2Btn.contains(event.target)) {
                 part2Dropdown.classList.add('hidden');
                 part2Arrow.classList.remove('rotate-90');
+            }
+            if (!part3Btn.contains(event.target)) {
+                part3Dropdown.classList.add('hidden');
+                part3Arrow.classList.remove('rotate-90');
             }
         });
 

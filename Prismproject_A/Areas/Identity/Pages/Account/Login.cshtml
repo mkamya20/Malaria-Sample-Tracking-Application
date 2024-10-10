@@ -5,48 +5,45 @@
     ViewData["Title"] = "Log in";
 }
 
-    <div class="flex-1 justify-center items-center h-screen bg-white rounded-xl shadow-lg p-10 w-1/4">
-  @*   <div class=" w-1/2  justify-center items-center p-4 rounded-lg shadow-lg"> *@
-        <form id="account" method="post">
-            <h2 class="text-center text-xl font-semibold mb-4">Please Login</h2>
-            <hr class="my-4">
 
-            <div asp-validation-summary="ModelOnly" class="text-red-500 mb-4" role="alert"></div>
+<div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8 mx-auto mt-10">
+    <form id="account" method="post">
+        <h2 class="text-center text-3xl font-semibold mb-6 text-gray-900">Please Log In</h2>
+        <hr class="my-4 border-gray-300">
 
-            <div class="mb-4">
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input asp-for="Input.Email" id="email" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" placeholder="Email">
-                <span asp-validation-for="Input.Email" class="text-red-500"></span>
-            </div>
+        <div asp-validation-summary="ModelOnly" class="text-red-500 mb-4" role="alert"></div>
 
-            <div class="mb-4">
-                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                <input asp-for="Input.Password" id="password" type="password" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" placeholder="Password">
-                <span asp-validation-for="Input.Password" class="text-red-500"></span>
-            </div>
+        <div class="mb-6">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input asp-for="Input.Email" id="email" type="email" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 p-3" placeholder="Email">
+            <span asp-validation-for="Input.Email" class="text-red-500 text-sm mt-1"></span>
+        </div>
 
-            <div class="mb-4 flex items-center">
-                <input class="form-checkbox h-4 w-4 text-indigo-600" asp-for="Input.RememberMe">
-                <label for="remember_me" class="ml-2 block text-sm text-gray-900">Remember me</label>
-            </div>
+        <div class="mb-6">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input asp-for="Input.Password" id="password" type="password" class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 p-3" placeholder="Password">
+            <span asp-validation-for="Input.Password" class="text-red-500 text-sm mt-1"></span>
+        </div>
 
-            <div class="mb-4 flex justify-between">
-                <button type="submit" class="w-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Log in</button>
-                <a href="/" class="w-1/2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center">Cancel</a>
-            </div>
+        <div class="mb-6 flex items-center">
+            <input class="form-checkbox h-5 w-5 text-blue-600 border-gray-300 rounded" asp-for="Input.RememberMe">
+            <label for="remember_me" class="ml-2 text-sm text-gray-700">Remember me</label>
+        </div>
 
-            <div class="mb-4">
-                <p class="text-center">
-                    <a id="forgot-password" asp-page="./ForgotPassword" class="text-sm text-blue-500">Forgot your password?</a>
-                </p>
-                <p class="text-center">
-                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-sm text-blue-500">Register as a new user</a>
-                </p>
-            </div>
-        </form>
-    </div>
-    </div>
-@* </div> *@
+        <div class="mb-6 flex gap-2">
+            <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">Log In</button>
+            <a href="/" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200">Cancel</a>
+        </div>
 
+        <div class="mb-6 text-center">
+            <p>
+                <a id="forgot-password" asp-page="./ForgotPassword" class="text-sm text-blue-600 hover:underline">Forgot your password?</a>
+            </p>
+            <p>
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-sm text-blue-600 hover:underline">Register as a new user</a>
+            </p>
+        </div>
+    </form>
+</div>
 
 
